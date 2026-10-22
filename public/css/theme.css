@@ -1,0 +1,87 @@
+/**
+ * Bebras IT Del Portal - shared theme tokens.
+ *
+ * Single source of truth for colors, radii, shadows and fonts.
+ * Loaded by the public layout (layouts/app.blade.php) AND the Filament admin
+ * panel (AdminPanelProvider render hook). Do not repeat these values elsewhere:
+ * reference the variables instead.
+ */
+:root {
+    /* Brand */
+    --brand-blue: #4294E3;
+    --brand-blue-strong: #2A72C9;      /* white text on this passes 4.5:1 */
+    --brand-blue-ink: #1F58A3;         /* blue TEXT/links on white or soft tints (>= 6:1) */
+    --brand-purple: #8F12FD;
+    --light: #F0F6FF;
+    --dark: #262B47;
+    --surface: #FFFFFF;
+    --ink-muted: #565F6E;
+
+    /* Legacy aliases used by the template CSS */
+    --primary: var(--brand-blue);
+    --secondary: var(--brand-purple);
+
+    /* Playful accents: strong / soft background / readable ink */
+    --sun: #FFC93C;
+    --sun-soft: #FFF3C9;
+    --sun-ink: #6B4500;
+    --tangerine: #FF8A3D;
+    --tangerine-soft: #FFE6D3;
+    --tangerine-ink: #8A3B00;
+    --mint: #2EC4A0;
+    --mint-soft: #D8F5EC;
+    --mint-ink: #0B6B52;
+    --bubblegum: #FF5FA2;
+    --bubblegum-soft: #FFE0EC;
+    --bubblegum-ink: #A31F59;
+    --grape-soft: #EBDDFF;
+    --grape-ink: #5B16B0;
+    --sky-soft: #DCEBFF;
+    --sky-ink: #1B4F8F;
+
+    /* One color per Bebras category (public badges AND admin badges) */
+    --cat-sikecil: var(--bubblegum);
+    --cat-sikecil-soft: var(--bubblegum-soft);
+    --cat-sikecil-ink: var(--bubblegum-ink);
+    --cat-siaga: var(--mint);
+    --cat-siaga-soft: var(--mint-soft);
+    --cat-siaga-ink: var(--mint-ink);
+    --cat-penggalang: var(--sun);
+    --cat-penggalang-soft: var(--sun-soft);
+    --cat-penggalang-ink: var(--sun-ink);
+    --cat-penegak: var(--brand-purple);
+    --cat-penegak-soft: var(--grape-soft);
+    --cat-penegak-ink: var(--grape-ink);
+
+    /* Gradients */
+    --gradient-brand: linear-gradient(to bottom right, var(--brand-blue-strong), var(--brand-purple));
+    --gradient-brand-reverse: linear-gradient(to bottom right, var(--brand-purple), var(--brand-blue-strong));
+    --gradient-rainbow: linear-gradient(90deg, var(--bubblegum), var(--tangerine), var(--sun), var(--mint), var(--brand-blue), var(--brand-purple));
+
+    /* Shape */
+    --radius-sm: .75rem;
+    --radius-card: 1.5rem;
+    --radius-pill: 999px;
+
+    /* Chunky, soft shadows */
+    --shadow-card: 0 5px 0 rgba(66, 148, 227, .14), 0 12px 24px rgba(38, 43, 71, .08);
+    --shadow-card-hover: 0 7px 0 rgba(143, 18, 253, .16), 0 18px 32px rgba(38, 43, 71, .12);
+    --shadow-button: 0 4px 0 rgba(38, 43, 71, .2);
+    --focus-ring: 0 0 0 3px #fff, 0 0 0 6px var(--brand-purple);
+
+    /* Type */
+    --font-display: 'Fredoka', 'Jost', system-ui, sans-serif;
+    --font-body: 'Nunito', 'Heebo', system-ui, sans-serif;
+
+    /* Layout rhythm */
+    --section-y: 3rem;
+    --section-y-lg: 5rem;
+    --nav-offset: 0px;
+    --tap-target: 44px;
+}
+
+@media (min-width: 992px) {
+    :root {
+        --nav-offset: 5.5rem; /* the public navbar is position:absolute on desktop */
+    }
+}

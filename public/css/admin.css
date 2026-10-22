@@ -1,0 +1,252 @@
+/**
+ * Filament admin theme - Bebras IT Del Portal.
+ * Contains NO color literals: every color is a variable from theme.css, so the
+ * admin panel and the public site always share one palette.
+ * Filament builds color ramps (--primary-50 ... --primary-950) from the palettes
+ * registered in AdminPanelProvider; they are re-pointed at the shared tokens here.
+ * Regenerate the ramp block with the formula in docs if tokens gain new colors.
+ */
+
+/* ---- Color ramps derived from the shared tokens ---- */
+:root:root {
+    --primary-50: color-mix(in srgb, var(--brand-blue-strong) 6%, white);
+    --primary-100: color-mix(in srgb, var(--brand-blue-strong) 13%, white);
+    --primary-200: color-mix(in srgb, var(--brand-blue-strong) 26%, white);
+    --primary-300: color-mix(in srgb, var(--brand-blue-strong) 45%, white);
+    --primary-400: color-mix(in srgb, var(--brand-blue-strong) 72%, white);
+    --primary-500: var(--brand-blue-strong);
+    --primary-600: color-mix(in srgb, var(--brand-blue-strong) 86%, black);
+    --primary-700: color-mix(in srgb, var(--brand-blue-strong) 70%, black);
+    --primary-800: color-mix(in srgb, var(--brand-blue-strong) 54%, black);
+    --primary-900: color-mix(in srgb, var(--brand-blue-strong) 40%, black);
+    --primary-950: color-mix(in srgb, var(--brand-blue-strong) 26%, black);
+
+    --info-50: color-mix(in srgb, var(--brand-blue) 6%, white);
+    --info-100: color-mix(in srgb, var(--brand-blue) 13%, white);
+    --info-200: color-mix(in srgb, var(--brand-blue) 26%, white);
+    --info-300: color-mix(in srgb, var(--brand-blue) 45%, white);
+    --info-400: color-mix(in srgb, var(--brand-blue) 72%, white);
+    --info-500: var(--brand-blue);
+    --info-600: var(--sky-ink);
+    --info-700: color-mix(in srgb, var(--sky-ink) 85%, black);
+    --info-800: color-mix(in srgb, var(--brand-blue) 54%, black);
+    --info-900: color-mix(in srgb, var(--brand-blue) 40%, black);
+    --info-950: color-mix(in srgb, var(--brand-blue) 26%, black);
+
+    --success-50: color-mix(in srgb, var(--mint) 6%, white);
+    --success-100: color-mix(in srgb, var(--mint) 13%, white);
+    --success-200: color-mix(in srgb, var(--mint) 26%, white);
+    --success-300: color-mix(in srgb, var(--mint) 45%, white);
+    --success-400: color-mix(in srgb, var(--mint) 72%, white);
+    --success-500: var(--mint);
+    --success-600: var(--mint-ink);
+    --success-700: color-mix(in srgb, var(--mint-ink) 85%, black);
+    --success-800: color-mix(in srgb, var(--mint) 54%, black);
+    --success-900: color-mix(in srgb, var(--mint) 40%, black);
+    --success-950: color-mix(in srgb, var(--mint) 26%, black);
+
+    --warning-50: color-mix(in srgb, var(--sun) 6%, white);
+    --warning-100: color-mix(in srgb, var(--sun) 13%, white);
+    --warning-200: color-mix(in srgb, var(--sun) 26%, white);
+    --warning-300: color-mix(in srgb, var(--sun) 45%, white);
+    --warning-400: color-mix(in srgb, var(--sun) 72%, white);
+    --warning-500: var(--sun);
+    --warning-600: var(--sun-ink);
+    --warning-700: color-mix(in srgb, var(--sun-ink) 85%, black);
+    --warning-800: color-mix(in srgb, var(--sun) 54%, black);
+    --warning-900: color-mix(in srgb, var(--sun) 40%, black);
+    --warning-950: color-mix(in srgb, var(--sun) 26%, black);
+
+    --danger-50: color-mix(in srgb, var(--bubblegum) 6%, white);
+    --danger-100: color-mix(in srgb, var(--bubblegum) 13%, white);
+    --danger-200: color-mix(in srgb, var(--bubblegum) 26%, white);
+    --danger-300: color-mix(in srgb, var(--bubblegum) 45%, white);
+    --danger-400: color-mix(in srgb, var(--bubblegum) 72%, white);
+    --danger-500: var(--bubblegum);
+    --danger-600: var(--bubblegum-ink);
+    --danger-700: color-mix(in srgb, var(--bubblegum-ink) 85%, black);
+    --danger-800: color-mix(in srgb, var(--bubblegum) 54%, black);
+    --danger-900: color-mix(in srgb, var(--bubblegum) 40%, black);
+    --danger-950: color-mix(in srgb, var(--bubblegum) 26%, black);
+
+    --sikecil-50: color-mix(in srgb, var(--cat-sikecil) 6%, white);
+    --sikecil-100: color-mix(in srgb, var(--cat-sikecil) 13%, white);
+    --sikecil-200: color-mix(in srgb, var(--cat-sikecil) 26%, white);
+    --sikecil-300: color-mix(in srgb, var(--cat-sikecil) 45%, white);
+    --sikecil-400: color-mix(in srgb, var(--cat-sikecil) 72%, white);
+    --sikecil-500: var(--cat-sikecil);
+    --sikecil-600: var(--cat-sikecil-ink);
+    --sikecil-700: color-mix(in srgb, var(--cat-sikecil-ink) 85%, black);
+    --sikecil-800: color-mix(in srgb, var(--cat-sikecil) 54%, black);
+    --sikecil-900: color-mix(in srgb, var(--cat-sikecil) 40%, black);
+    --sikecil-950: color-mix(in srgb, var(--cat-sikecil) 26%, black);
+
+    --siaga-50: color-mix(in srgb, var(--cat-siaga) 6%, white);
+    --siaga-100: color-mix(in srgb, var(--cat-siaga) 13%, white);
+    --siaga-200: color-mix(in srgb, var(--cat-siaga) 26%, white);
+    --siaga-300: color-mix(in srgb, var(--cat-siaga) 45%, white);
+    --siaga-400: color-mix(in srgb, var(--cat-siaga) 72%, white);
+    --siaga-500: var(--cat-siaga);
+    --siaga-600: var(--cat-siaga-ink);
+    --siaga-700: color-mix(in srgb, var(--cat-siaga-ink) 85%, black);
+    --siaga-800: color-mix(in srgb, var(--cat-siaga) 54%, black);
+    --siaga-900: color-mix(in srgb, var(--cat-siaga) 40%, black);
+    --siaga-950: color-mix(in srgb, var(--cat-siaga) 26%, black);
+
+    --penggalang-50: color-mix(in srgb, var(--cat-penggalang) 6%, white);
+    --penggalang-100: color-mix(in srgb, var(--cat-penggalang) 13%, white);
+    --penggalang-200: color-mix(in srgb, var(--cat-penggalang) 26%, white);
+    --penggalang-300: color-mix(in srgb, var(--cat-penggalang) 45%, white);
+    --penggalang-400: color-mix(in srgb, var(--cat-penggalang) 72%, white);
+    --penggalang-500: var(--cat-penggalang);
+    --penggalang-600: var(--cat-penggalang-ink);
+    --penggalang-700: color-mix(in srgb, var(--cat-penggalang-ink) 85%, black);
+    --penggalang-800: color-mix(in srgb, var(--cat-penggalang) 54%, black);
+    --penggalang-900: color-mix(in srgb, var(--cat-penggalang) 40%, black);
+    --penggalang-950: color-mix(in srgb, var(--cat-penggalang) 26%, black);
+
+    --penegak-50: color-mix(in srgb, var(--cat-penegak) 6%, white);
+    --penegak-100: color-mix(in srgb, var(--cat-penegak) 13%, white);
+    --penegak-200: color-mix(in srgb, var(--cat-penegak) 26%, white);
+    --penegak-300: color-mix(in srgb, var(--cat-penegak) 45%, white);
+    --penegak-400: color-mix(in srgb, var(--cat-penegak) 72%, white);
+    --penegak-500: var(--cat-penegak);
+    --penegak-600: var(--cat-penegak-ink);
+    --penegak-700: color-mix(in srgb, var(--cat-penegak-ink) 85%, black);
+    --penegak-800: color-mix(in srgb, var(--cat-penegak) 54%, black);
+    --penegak-900: color-mix(in srgb, var(--cat-penegak) 40%, black);
+    --penegak-950: color-mix(in srgb, var(--cat-penegak) 26%, black);
+
+    --font-family: var(--font-body);
+}
+
+/* ---- Typography ---- */
+.fi-body { font-family: var(--font-body); }
+
+.fi-header-heading,
+.fi-simple-header-heading,
+.fi-section-header-heading,
+.fi-sidebar-group-label,
+.fi-topbar .fi-logo,
+.fi-wi-stats-overview-stat-value,
+.fi-modal-heading,
+.fi-btn,
+.fi-badge,
+.fi-tabs-item,
+.fi-ta-header-cell-label {
+    font-family: var(--font-display);
+}
+
+.fi-header-heading { font-weight: 700; }
+
+/* ---- Shape: rounded, soft, chunky ---- */
+.fi-section,
+.fi-ta-ctn,
+.fi-wi-stats-overview-stat,
+.fi-modal-window,
+.fi-dropdown-panel,
+.fi-simple-main,
+.fi-fo-field-wrp-hint {
+    border-radius: var(--radius-card);
+}
+
+.fi-section,
+.fi-ta-ctn,
+.fi-wi-stats-overview-stat,
+.fi-simple-main {
+    border: 2px solid var(--sky-soft);
+    box-shadow: var(--shadow-card);
+}
+
+.fi-input-wrp,
+.fi-select-input,
+.fi-fo-file-upload .filepond--root {
+    border-radius: var(--radius-sm);
+}
+
+.fi-btn {
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    min-height: var(--tap-target);
+}
+
+.fi-btn.fi-color,
+.fi-btn.fi-color-primary {
+    box-shadow: var(--shadow-button);
+}
+
+.fi-badge { border-radius: var(--radius-pill); font-weight: 600; }
+
+.fi-icon-btn { min-width: var(--tap-target); min-height: var(--tap-target); }
+
+/* ---- Page + navigation chrome ---- */
+.fi-body, .fi-layout { background: var(--light); }
+
+.fi-topbar nav,
+.fi-sidebar-header {
+    background: var(--surface);
+    border-bottom: 3px solid transparent;
+    border-image: var(--gradient-rainbow) 1;
+}
+
+.fi-sidebar { background: var(--surface); }
+
+.fi-sidebar-item-btn { border-radius: var(--radius-pill); min-height: var(--tap-target); }
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    background: var(--gradient-brand);
+    box-shadow: var(--shadow-button);
+}
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-label,
+.fi-sidebar-item.fi-active .fi-icon { color: var(--surface); }
+
+/* ---- Login ---- */
+.fi-simple-layout {
+    background:
+        url(../img/bg-circle.png) left top no-repeat,
+        url(../img/bg-triangle.png) right 50% no-repeat,
+        var(--gradient-brand);
+}
+
+.fi-simple-main { background: var(--surface); padding-block: 2rem; }
+
+.fi-simple-header-heading { color: var(--brand-blue-strong); }
+
+/* ---- Readable secondary text ---- */
+.fi-breadcrumbs-item-label { color: var(--ink-muted); }
+
+/* ---- Touch targets (>= 44px; checkboxes >= 24px) ---- */
+.fi-user-menu-trigger,
+.fi-icon-btn { min-width: var(--tap-target); min-height: var(--tap-target); }
+
+@media (max-width: 767.98px), (pointer: coarse) {
+    .fi-link,
+    .fi-ac-link-action,
+    .fi-ta-col,
+    .fi-fo-rich-editor button,
+    .fi-ta-actions a,
+    .fi-ta-actions button,
+    .fi-ta-header-cell-sort-btn,
+    .fi-dropdown-list-item,
+    .fi-pagination-item-btn,
+    .fi-pagination-records-per-page-select-ctn select {
+        min-height: var(--tap-target);
+        min-width: var(--tap-target);
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .fi-checkbox-input { width: 1.5rem; height: 1.5rem; }
+    .fi-input, .fi-select-input { min-height: var(--tap-target); }
+}
+
+/* ---- Focus + motion ---- */
+.fi-body :focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    .fi-body *, .fi-body *::before, .fi-body *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
