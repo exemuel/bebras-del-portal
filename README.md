@@ -98,11 +98,6 @@ php artisan test
 
 Mencakup landing page, berita, pencarian & unduhan sertifikat, impor massal, serta konsistensi UI dan tema (satu `<h1>`, tautan navigasi, footer dari `SiteSetting`, palet hanya di `theme.css`, warna kategori, tema yang sama di situs dan admin).
 
-## Dokumen perencanaan
-
-- [Implementation-Plan.md](Implementation-Plan.md) — rencana pembangunan ulang awal.
-- [Revision-Implementation-Plan.md](Revision-Implementation-Plan.md) — revisi pencarian sertifikat dan penyeragaman UI.
-
 ## Lisensi
 
 Kode aplikasi dilisensikan di bawah [GPL-3.0](LICENSE). Templat tampilan berasal dari HTML Codex dan tunduk pada [LICENSE.txt](LICENSE.txt) (atribusi wajib dipertahankan).
