@@ -2,6 +2,13 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Widgets\CertificateStatsOverview;
+use App\Filament\Widgets\LatestNewsTable;
+use App\Filament\Widgets\NewsActivityChart;
+use App\Filament\Widgets\NewsStatsOverview;
+use App\Filament\Widgets\ParticipantsByCategoryChart;
+use App\Filament\Widgets\ParticipantsByYearTable;
+use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -12,8 +19,6 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
-use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
@@ -30,6 +35,14 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->profile(isSimple: false)
+            // Google Authenticator (TOTP) as a second factor beside the password. Optional
+            // until the admin has enrolled; then flip `isRequired` to true to force it.
+            ->multiFactorAuthentication([
+                AppAuthentication::make()
+                    ->recoverable()
+                    ->brandName('Bebras IT Del'),
+            ], isRequired: false)
             ->brandName('Bebras IT Del')
             ->brandLogo(asset('img/itdel.png'))
             ->brandLogoHeight('2.75rem')
@@ -58,8 +71,12 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+                CertificateStatsOverview::class,
+                ParticipantsByCategoryChart::class,
+                ParticipantsByYearTable::class,
+                NewsStatsOverview::class,
+                NewsActivityChart::class,
+                LatestNewsTable::class,
             ])
             ->middleware([
                 EncryptCookies::class,

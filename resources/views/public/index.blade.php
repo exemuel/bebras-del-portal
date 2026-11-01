@@ -7,7 +7,7 @@
     <div class="container-xxl bg-primary hero-header mb-5" id="home">
         <div class="container px-lg-5">
             <div class="row g-4 align-items-center">
-                <div class="col-lg-8 text-center text-lg-start">
+                <div class="col-lg-8 hero-copy text-center text-lg-start">
                     <h1 class="text-white mb-4 animated slideInDown">
                         <span class="visually-hidden">Bebras Biro Institut Teknologi Del</span>
                         <img style="max-width: 60%; height: auto;" class="img-fluid wow fadeInUp" data-wow-delay="0.2s" src="{{ asset('img/bebras ind red.png') }}" alt="Bebras Indonesia">
@@ -15,12 +15,14 @@
                     <p class="text-white pb-3 animated slideInDown fs-5" style="line-height: 1.8;">
                         {{ $settings['hero_tagline'] ?? 'Bebras bertujuan memperkenalkan informatika dan berpikir komputasional kepada guru, generasi muda, pengambil keputusan pendidikan, dan masyarakat, sebagai ilmu yang mendidik dan meningkatkan pemahaman dalam pemanfaatan teknologi.' }}
                     </p>
-                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-                        <a href="{{ route('certificates.search') }}" class="btn btn-secondary-gradient py-sm-3 px-sm-5 rounded-pill animated slideInLeft">
-                            <i class="fa fa-search me-2"></i>Cari & Unduh Sertifikat
+                    <div class="hero-cta d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="{{ route('certificates.search') }}" class="btn btn-hero-primary animated slideInLeft">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <span>Cari &amp; Unduh Sertifikat</span>
                         </a>
-                        <a href="#aboutus" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">
-                            Tentang Kami
+                        <a href="#aboutus" class="btn btn-hero-secondary animated slideInRight">
+                            <span>Tentang Kami</span>
+                            <i class="fa fa-arrow-down" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>

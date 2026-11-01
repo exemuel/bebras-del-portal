@@ -7,6 +7,7 @@ use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,13 +17,22 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // 1. Administrator account
-        User::firstOrCreate(
+        // Outside local/testing the password comes from ADMIN_PASSWORD, or is generated and
+        // printed once; the fixed development password is never used on a real server.
+        $adminPassword = env('ADMIN_PASSWORD')
+            ?: (app()->environment('local', 'testing') ? 'password' : Str::password(16));
+
+        $admin = User::firstOrCreate(
             ['email' => 'admin@bebras.del.ac.id'],
             [
                 'name' => 'Biro Bebras IT Del',
-                'password' => Hash::make('password'),
+                'password' => Hash::make($adminPassword),
             ]
         );
+
+        if ($admin->wasRecentlyCreated && ! env('ADMIN_PASSWORD') && ! app()->environment('local', 'testing')) {
+            $this->command?->warn("Admin account created: {$admin->email} / {$adminPassword} (shown once; change it from the Profile page).");
+        }
 
         // 2. Authoritative Site Settings (from legacy site)
         $settings = [

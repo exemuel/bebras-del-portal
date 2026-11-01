@@ -323,14 +323,113 @@ a { color: var(--brand-blue-ink); }
     .hero-header { padding: 0; }
 }
 
-.hero-header .btn-outline-light {
-    border: 2px solid #fff;
-    color: #fff;
+/* Nudge the copy up so the CTAs clear the white bottom wave (only where the text is short enough) */
+@media (min-width: 1200px) {
+    .hero-copy {
+        position: relative;
+        top: -3rem;
+    }
 }
 
-.hero-header .btn-outline-light:hover {
-    background: #fff;
-    color: var(--brand-blue-strong);
+/*
+ * Hero CTAs. Primary = solid sun-yellow (the complement of the blue-purple
+ * hero, so it pops); secondary = frosted ghost that stays clearly subordinate.
+ * Hover lift uses the `translate` property, not `transform`, because
+ * animate.css (fill-mode: both) pins `transform` on .animated elements.
+ */
+.hero-cta .btn {
+    gap: .6rem;
+    min-height: 3.25rem;
+    padding: .8rem 2rem;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    transition: translate .2s ease, box-shadow .2s ease, background-color .2s ease,
+                border-color .2s ease, color .2s ease;
+}
+
+.hero-cta .btn:focus-visible {
+    /* dark inner + white outer ring: the default purple ring vanishes on the hero */
+    box-shadow: 0 0 0 3px var(--dark), 0 0 0 6px #fff;
+}
+
+.hero-cta .btn i {
+    transition: transform .25s ease;
+}
+
+/* Primary */
+.btn-hero-primary {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border: 2px solid transparent;
+    background-color: var(--sun);
+    color: var(--dark);
+    font-weight: 700;
+    box-shadow: 0 4px 0 color-mix(in srgb, var(--sun) 55%, #5a3b00),
+                0 14px 28px rgba(38, 43, 71, .35);
+}
+
+/* light sweep on hover */
+.btn-hero-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -60%;
+    width: 40%;
+    z-index: -1;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .65), transparent);
+    transform: skewX(-20deg);
+    transition: inset .6s ease;
+}
+
+.btn-hero-primary:hover {
+    background-color: color-mix(in srgb, var(--sun) 80%, #fff);
+    color: var(--dark);
+    translate: 0 -3px;
+    box-shadow: 0 7px 0 color-mix(in srgb, var(--sun) 55%, #5a3b00),
+                0 18px 32px rgba(38, 43, 71, .4);
+}
+
+.btn-hero-primary:hover::before { inset: 0 auto 0 130%; }
+.btn-hero-primary:hover i { transform: scale(1.2) rotate(-12deg); }
+
+.btn-hero-primary:active {
+    translate: 0 3px;
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--sun) 55%, #5a3b00),
+                0 4px 10px rgba(38, 43, 71, .3);
+}
+
+/* Secondary */
+/* Dark glass, not a bare outline: white text stays legible even where the
+   button crosses the white wave (white-on-white was the old failure). */
+.btn-hero-secondary {
+    border: 2px solid rgba(255, 255, 255, .6);
+    background-color: rgba(38, 43, 71, .72);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-hero-secondary:hover {
+    border-color: #fff;
+    background-color: rgba(38, 43, 71, .88);
+    color: #fff;
+    translate: 0 -2px;
+}
+
+.btn-hero-secondary:hover i { transform: translateY(3px); }
+
+.btn-hero-secondary:active {
+    translate: 0 1px;
+    background-color: rgba(38, 43, 71, .95);
+}
+
+/* Phones: stacked, full-width, primary first */
+@media (max-width: 575.98px) {
+    .hero-cta .btn {
+        flex: 1 1 100%;
+        padding-inline: 1.25rem;
+    }
 }
 
 /* A rainbow strip under section titles */

@@ -48,12 +48,21 @@ Dibuat otomatis oleh `php artisan db:seed` (`database/seeders/DatabaseSeeder.php
 | Email | `admin@bebras.del.ac.id` |
 | Password | `password` |
 
-> **Penting:** password ini hanya untuk pengembangan lokal. Di server produksi, ganti segera lewat panel admin atau
-> `php artisan tinker` (`User::where('email','admin@bebras.del.ac.id')->first()->update(['password' => Hash::make('...')])`)
-> sebelum situs dibuka ke publik.
+> **Penting:** password ini hanya untuk pengembangan lokal (`local`/`testing`). Di luar itu, `db:seed` memakai `ADMIN_PASSWORD`
+> dari `.env`, atau membuat password acak yang ditampilkan sekali. Setelah masuk, ganti password lewat menu pengguna → **Profil**.
+
+### Profil & autentikasi dua faktor (Google Authenticator)
+
+- Menu pengguna (kanan atas) → **Profil**: ubah nama, email, dan password (butuh password saat ini; password baru min. 12 karakter, huruf besar/kecil, angka, dan tidak bocor di produksi).
+- Di halaman Profil, aktifkan **Aplikasi autentikator**: pindai kode QR dengan Google Authenticator (atau aplikasi TOTP lain), masukkan kode 6 digit, lalu **simpan kode pemulihan** (hanya tampil sekali).
+- Saat masuk, setelah email + password diminta kode 6 digit (atau satu kode pemulihan).
+- Untuk mewajibkan 2FA bagi semua admin, ubah `isRequired: false` menjadi `true` di `AdminPanelProvider` (`->multiFactorAuthentication(...)`).
+- Admin kehilangan ponsel dan kode pemulihan: `php artisan bebras:2fa-reset admin@bebras.del.ac.id`.
+- Rahasia 2FA dienkripsi dengan `APP_KEY`; jangan ganti/hilangkan `APP_KEY` tanpa mengatur ulang 2FA.
 
 ## Alur kerja admin
 
+0. **Dashboard** — statistik peserta per tahun dan kategori (dihitung dari sertifikat yang sudah diunggah) serta statistik berita & pengumuman.
 1. **Berita** — buat, jadwalkan, dan publikasikan berita.
 2. **Pengaturan Situs** — ubah teks beranda, statistik, alamat, telepon, email, dan tautan Facebook/Instagram/YouTube (`contact_*`, `social_*`). Footer membaca nilai ini dan di-cache 10 menit; cache dibersihkan otomatis saat disimpan.
 3. **Sertifikat** — unggah satu per satu. Kombinasi `(username, tahun, kategori, jenis penghargaan)` bersifat unik.
